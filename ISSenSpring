@@ -1,0 +1,72 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class ISSenSpring {
+Scanner scan = new Scanner(System.in);
+userArrayList userList = new userArrayList();
+
+	
+	public ISSenSpring() {
+		menu();
+	}
+	public void menu() {
+		String menuItems = "\nSenior Spring Courses\n"
+				+ "(1) CIS 4309 E-Commerce\n"
+				+ "(2) CIS 4470 System Implementation and Project Management\n"
+				+ "(3) Free Electives\n"
+				+ "\nEnter number of choice or press Q to go back: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(scan, "Enter letter of choice [123Q]: ", "(?i)[123Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} else if (choice.equalsIgnoreCase("1")) {
+				System.out.println("\nDescription: \n\nThis course provides tools, skills, and an understanding of technology, business concepts \nand "
+						+ "issues that surround the emergence of electronic commerce. The student develops an understanding of \n"
+						+ "the current practices and opportunities in electronic publishing, electronic shopping, electronic distribution,\n"
+						+ "and electronic collaboration. The student also explores several of the problem areas in electronic commerce.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("2")) {
+				System.out.println("\nDescription: \n\nThis course will provide an opportunity for students to combine and apply knowledge from prior \n"
+						+ "classes to implement a project. It also describes the problems of managing and implementing a project \n"
+						+ "within an organization for the purpose of achieving a specific objective. It will broadly cover the \n"
+						+ "operational and conceptual issue faced by modern project managers.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("3")) {
+				System.out.println("\nDescription: \n\nChoose any Free Elective you would like to take.");
+				System.out.println("Credits: 9.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String args[]) {
+		new ISSenSpring();
+	}
+}
