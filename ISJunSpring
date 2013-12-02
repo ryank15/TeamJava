@@ -1,0 +1,101 @@
+package teamjava.courses.project;
+
+import java.util.Scanner;
+
+public class ISJunSpring {
+Scanner scan = new Scanner(System.in);
+userArrayList userList = new userArrayList();
+
+	
+	public ISJunSpring() {
+		menu();
+	}
+	public void menu() {
+		String menuItems = "\nJunior Spring Courses\n"
+				+ "(1) CIS 3306 Bus Program Concept II\n"
+				+ "(2) CIS 3390 Networking I\n"
+				+ "(3) MA 1170 Fundamentals of Calculus\n"
+				+ "(4) ENG 3313 Composition II \n"
+				+ "(5) General Education Course\n"
+				+ "\nEnter number of choice or press Q to go back: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(scan, "Enter letter of choice [12345Q]: ", "(?i)[12345Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} else if (choice.equalsIgnoreCase("1")) {
+				System.out.println("\nDescription: \n\nA second course in business programming stressing data processing and advanced \n"
+						+ "programming techniques.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("2")) {
+				System.out.println("\nDescription: \n\nIntroduction to the underlying principles of networking. Concepts of network \n"
+						+ "protocols and network applications are covered TCP/IP principles will be taught.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("3")) {
+				System.out.println("\nDescription: \n\nThe fundamental concepts of calculus is for non-physical science majors utilizing \n"
+						+ "the basic techniques of differential and integral calculus. Not available to students who have completed MA \n"
+						+ "2231.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("4")) {
+				System.out.println("\nDescription: \n\nAdvanced writing and analytical thinking based on texts from across the curriculum. \n"
+						+ "Must be passed with a minimum grade of “C-” before graduation.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			}
+			else if(choice.equalsIgnoreCase("5")){
+				System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+				System.out.println("Credits: 3.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String args[]) {
+		new ISJunSpring();
+	}
+}
