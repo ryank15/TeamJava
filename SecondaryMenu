@@ -1,0 +1,38 @@
+package teamjava.courses.project;
+
+public class SecondaryMenu 
+{
+	private String csTrack;
+	private String isTrack;
+	
+	public SecondaryMenu(String csTrack, String isTrack)
+	{
+		this.csTrack = csTrack;
+		this.isTrack = isTrack;
+	}
+
+	public String getCsTrack() 
+	{
+		return csTrack;
+	}
+
+	public void setCsTrack(String csTrack) 
+	{
+		this.csTrack = csTrack;
+	}
+
+	public String getIsTrack() 
+	{
+		return isTrack;
+	}
+
+	public void setIsTrack(String isTrack) 
+	{
+		this.isTrack = isTrack;
+	}
+	
+	public String toString()
+	{
+		return(csTrack + "\n" + isTrack);
+	}	
+}
