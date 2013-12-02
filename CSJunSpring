@@ -1,0 +1,114 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class CSJunSpring 
+{
+	Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+	public CSJunSpring()
+	{
+		menu();
+	}
+	 public void menu() 
+	 {
+	        String menuItems = "\nJunior Spring Courses\n"
+	                + "(1) = CIS 3300 Programming Languages\n"
+	                + "(2) = CIS 3304 Advanced Web Design\n"
+	                + "(3) = MA 3314 Applied Probability and Statistics\n"
+	                + "(4) = ENG 3313 Composition II\n"
+	                + "(5) = General Education Course\n"
+	                + "\nEnter number of choice or press Q to go back: ";
+	        String choice = "";
+	        while (!choice.equalsIgnoreCase("Q")) 
+	        {
+	            System.out.println(menuItems);
+	            choice = Validator.getLine(scan, "Enter number of choice [12345Q]: ", "(?i)[12345Q]");
+	            if(choice.equalsIgnoreCase("Q")) 
+	            {
+	                return;
+	            } 
+	            else if (choice.equalsIgnoreCase("1")) 
+	            {
+	                System.out.println( "\nDescription: \n\nComparative study of current programming languages. Examines the \n"
+	                		+ "structure of languages and their use in problem solving.");
+	                System.out.println("Credits: 3.0");
+	                System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+	        		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+	        			if(choice.equalsIgnoreCase("Y"))
+	        			{
+	        				Favorites();
+	        			}
+	        			else if(choice.equalsIgnoreCase("N"))
+	        			{
+	        				System.out.println(menuItems);
+	        			}
+	        	}
+	           
+	            else if (choice.equalsIgnoreCase("2")) 
+	            {
+	                System.out.println( "\nDescription: \n\nThis course introduces modern techniques in advanced web design. Topics \n"
+	                		+ "include advanced CSS and XHTML, JavaScript, AJAX, DOM, advanced graphic elements for web design, and \n"
+	                		+ "using forms to acquire input. Other advanced topics may be discussed, including Rich Internet \n"
+	                		+ "Applications and server-side development.");
+	                System.out.println("Credits: 3.0");
+	                System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+	        		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+	        			if(choice.equalsIgnoreCase("Y"))
+	        			{
+	        				Favorites();
+	        			}
+	        			else if(choice.equalsIgnoreCase("N"))
+	        			{
+	        				System.out.println(menuItems);
+	        			}
+	        	}
+	            
+	            else if (choice.equalsIgnoreCase("3")) 
+	            {
+	                System.out.println( "\nDescription: \n\nAn introduction to applications of descriptive, inferential statistics, \n"
+	                		+ "and probability. Descriptive statistics including frequency distributions, measures of location and \n"
+	                		+ "variation; axioms of probability, probability (both theoretical and simulated), permutations, \n"
+	                		+ "combinations, random variables, expected value, and decision making; probability distributions \n"
+	                		+ "(both discrete and continuous), distribution functions, sampling and sampling distributions; \n"
+	                		+ "statistical inferences concerning means, standard deviations, and proportions; analysis of variance, \n"
+	                		+ "non-parametric methods, regression, correlation, planning surveys and experiments. (Addresses NCTM \n"
+	                		+ "Standards 1 .5.6, 1 .5.7, and 1 .5.11 for Mathematics Education majors.)");
+	                System.out.println("Credits: 3.0");
+	                System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+	        		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+	        			if(choice.equalsIgnoreCase("Y"))
+	        			{
+	        				Favorites();
+	        			}
+	        			else if(choice.equalsIgnoreCase("N"))
+	        			{
+	        				System.out.println(menuItems);
+	        			}
+	        	
+	            } 
+	            else if (choice.equalsIgnoreCase("4")) 
+	            {
+	                System.out.println("\nDescription: \n\nAdvanced writing and analytical thinking based on texts from across the \n"
+	                		+ "curriculum. Must be passed with a minimum grade of “C-” before graduation.");
+	                System.out.println("Credits: 3.0");
+	            } 
+	            else if (choice.equalsIgnoreCase("5")) 
+	            {
+	            	System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+					System.out.println("Credits: 3.0");
+				}
+	        }
+	    }
+	 private void Favorites() 
+		{
+			String userName = Validator.getLine(scan, "\nEnter Username: ");
+			String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+			Favorites favorite = new Favorites(userName, course);
+			userList.Favorites(favorite);
+		}
+	 public static void main(String[] args)
+	 {
+		 new CSJunSpring();
+	 }
+}
