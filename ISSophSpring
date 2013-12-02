@@ -1,0 +1,69 @@
+package teamjava.courses.project;
+
+import java.util.Scanner;
+
+public class ISSophSpring {
+	Scanner sc = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+	
+	public void menu() {
+		String menuItems = "\nSophomore Spring Courses\n"
+				+ "(1) = CIS 3315 Data Structures\n"
+				+ "(2) = CIS 3340 Database Systems\n"
+				+ "(3) = General Education Courses\n"
+				+ "\npress Q to go back a page: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(sc, "Enter number of choice [123Q]: ", "(?i)[123Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} else if (choice.equalsIgnoreCase("1")) {
+				System.out.println("\nDescription: \n\nIntroduces fundamental data structures such as arrays, "
+						+ "linked lists, stacks, queues, trees, and graphs. Other more advanced topics may include recursion, "
+						+ "sorting and hashing.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(sc, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("2")) {
+				System.out.println("\nDescription: \n\nFirst course in the theory and use of database management systems. "
+						+ "Provides experience in the creation of an actual database system and the manipulation of the data in it.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(sc, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("3")) {
+				System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+				System.out.println("Credits: 9.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(sc, "\nEnter Username: ");
+		String course = Validator.getLine(sc, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String[] args)
+	{
+		new ISSophSpring();
+	}
+}
+
