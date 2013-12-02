@@ -1,0 +1,165 @@
+package teamjava.courses.project;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class userArrayList 
+{
+	private List<NewUser> users = null;
+	private List<Favorites> favorites = null;
+	
+	public userArrayList() 
+	{
+		users = new ArrayList<NewUser>();
+		favorites = new ArrayList<Favorites>();
+		loadFavorites();
+		loadUsers();
+	}
+
+	private void loadUsers() 
+	{
+		Scanner scan;
+		try 
+		{
+			scan = new Scanner(new File("Users.txt"));
+			while (scan.hasNext()) 
+			{
+				String s = scan.nextLine();
+				String[] sa = s.split(":");
+				String userName = sa[0];
+				String pw = sa[1];
+				users.add(new NewUser(userName, pw));
+			}
+			scan.close();
+		} 
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	private void loadFavorites()
+	{
+		Scanner scan;
+		try
+		{
+			scan = new Scanner(new File("Favorites.txt"));
+			while(scan.hasNext())
+			{
+				String s = scan.nextLine();
+				String[] sa = s.split(":");
+				String userName = sa[0];
+				String course = sa[1];
+				favorites.add(new Favorites(userName, course));
+			}
+			scan.close();
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	private void saveUsers() 
+	{
+		PrintWriter writer = null;
+		try 
+		{
+			writer = new PrintWriter("Users.txt", "UTF-8");
+			for (NewUser newUser : users) 
+			{
+				writer.println(newUser.toFileString());
+			}
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		} 
+		finally 
+		{
+			if (writer != null)
+				writer.close();
+		}
+	}
+	
+	public void newUser(NewUser newUser)
+	{
+		users.add(newUser);
+		saveUsers();
+	}
+	
+	public boolean checkUser(String name, String pw)
+	{
+		for(NewUser user : users) 
+		{
+			if(user.getUserName().equals(name) && user.getPw().equals(pw)) return true;
+		}
+		return false;
+	}
+	
+	public boolean checkFavorite(String userName)
+	{
+		for(Favorites favorite : favorites)
+		{
+			if(favorite.getUserName().equals(userName)) return true;
+		}
+		return false;
+	}
+	
+	public void saveFavorites()
+	{
+		PrintWriter writer = null;
+		try 
+		{
+			writer = new PrintWriter("Favorites.txt", "UTF-8");
+			for (Favorites favorite : favorites) 
+			{
+				writer.println((favorite).toFileString());
+			}
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		} 
+		finally 
+		{
+			if (writer != null)
+				writer.close();
+		}
+	}
+	
+	public Favorites[] filterByUsername(String userName) {
+		List<Favorites> favoritesList = new ArrayList<Favorites>();
+		for (Favorites f : favorites) {
+			if (f.getUserName().equalsIgnoreCase(userName)) {
+				favoritesList.add(f);
+			}
+		}
+		return favoritesList.toArray(new Favorites[favoritesList.size()]);
+	}
+	
+	public void Favorites(Favorites favorite)
+	{
+		favorites.add(favorite);
+		saveFavorites();
+	}
+	
+	@Override
+	public String toString() 
+	{
+		String s = "";
+		for(NewUser NewUser : users) 
+		{
+			s += NewUser.toString() + "\n";
+		}
+		if (s.length() > 0) 
+		{
+			s = s.substring(0, s.length() - 1);
+		}
+		return s;
+	}
+}
