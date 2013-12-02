@@ -1,0 +1,88 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class ISJunFall {
+	Scanner sc = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+	public ISJunFall(){
+		menu();
+	}
+	public void menu() {
+		String menuItems = "\nJunior Fall Courses\n"
+				+ "(1) = CIS 2206 Business Programming Concepts I\n"
+				+ "(2) = CIS 3305 Computer Security and Ethics\n"
+				+ "(3) = MA 1129 Finite Mathematics\n"
+				+ "(4) = General Education Course\n"
+				+ "\npress Q to go back a page: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(sc, "Enter number of choice [12345Q]: ", "(?i)[12345Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} else if (choice.equalsIgnoreCase("1")) {
+				System.out.println("\nDescription: \n\nAn introduction to analyzing and designing solutions to business-related "
+						+ "problems using a business programming language.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(sc, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("2")) {
+				System.out.println("\nDescription: \n\nThis course addresses issues related to computer security and ethics. "
+						+ "Students are expected to develop basic understanding of important concepts and theories in "
+						+ "these areas and be able to apply them in the real world. Major topics include: theories of "
+						+ "ethical decision-making, information privacy, professional and ethical responsibilities,"
+						+ " microcomputer security, network and telecommunications security, and encryption techniques ");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(sc, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("3")) {
+				System.out.println("\nDescription: \n\nAn initial treatment of those topics in basic mathematics that are of special "
+						+ "importance in business and the social sciences. Topics included are logic, sets and counting techniques, "
+						+ "probability, mathematical models, linear equations and inequalities, introduction of linear programming, "
+						+ "and matrices, also Markov Chains and Game Theory.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(sc, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("4")) {
+				System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+				System.out.println("Credits: 6.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(sc, "\nEnter Username: ");
+		String course = Validator.getLine(sc, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String[] args)
+	{
+		new ISJunFall();
+	}
+}
