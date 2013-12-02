@@ -1,0 +1,37 @@
+package teamjava.courses.project;
+
+public class Favorites 
+{
+	private String userName;
+	private String course;
+
+	public Favorites(String userName, String course) 
+	{
+		this.userName = userName;
+		this.course = course;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public String getCourse(){
+		return course;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public void setCourse(String course){
+		this.course = course;
+	}
+	public static String getHeadings() 
+	{
+		return String.format("%-15s %-15s", "Username", "Course");
+	}
+	public String toString() 
+	{
+		return String.format("%-15s %-15s", userName, course);
+	}
+	public String toFileString() 
+	{
+		return String.format("%1s:%1s", userName, course);
+	}
+}
