@@ -1,0 +1,283 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+
+public class MainMenu 
+{
+	static Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+	userArrayList favoritesList = new userArrayList();
+	public MainMenu()
+	{
+		menu();
+	}
+	public void menu()
+	{
+		String menuItems = "Main Menu\n" 
+							+ "\n(1) = New User\n" 
+							+ "(2) = Login Previous User\n"
+							+ "(3) = Team Java Extra Credit\n"
+							+ "\nEnter choice or press Q to Quit: ";
+		String choice = "";
+		//Creates the Menu with choices.
+	while(!choice.equalsIgnoreCase("Q"))
+	{
+		System.out.println(menuItems);
+		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[123Q]");
+		if(choice.equalsIgnoreCase("Q"))
+			{
+				return;
+			}
+			else if(choice.equalsIgnoreCase("1"))
+			{
+				NewUser();
+				//Calls the newUser() class.
+			}
+			else if(choice.equalsIgnoreCase("2"))
+			{
+				previousUser();
+				//Calls the previousUser() class.
+			}
+			else if(choice.equalsIgnoreCase("3"))
+			{
+				System.out.println("\nState Farm Competition:  Three Group Members Participated");
+				System.out.println("Master the Mainframe:    All Group Members Participated");
+				System.out.println("CS Club Activites:       Four Group Members Participated");
+				System.out.println("Study Groups:            All Group Members Participated\n");
+			}
+		}
+	}
+	public void previousUser()
+	{
+		String userName = Validator.getLine(scan, "\nEnter MU Username: ");
+		String pw = Validator.getLine(scan, "Enter Password: ");
+		if(userList.checkUser(userName, pw)) 
+		{
+			SecondaryMenu();
+		} 
+		else 
+		{
+			System.out.println("\nUsername or Password is not valid.\n");
+		}
+	}
+	public void SecondaryMenu()
+	{
+		String menuItems = "\nWhat is your Major?\n" 
+							+ "\n(1) = Computer Science Major\n" 
+							+ "(2) = Information Systems Major\n"
+							+ "(3) = View Favorite Courses\n"
+							+ "\nEnter choice or press Q to Quit: ";
+		String choice = "";
+		//Creates the Menu with choices.
+	while(!choice.equalsIgnoreCase("Q"))
+	{
+		System.out.println(menuItems);
+		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[123Q]");
+		if(choice.equalsIgnoreCase("Q"))
+			{
+				return;
+			}
+			else if(choice.equalsIgnoreCase("1"))
+			{
+				String menuItems1 = "\nWhat Year and Semester are you in?\n" 
+						+ "\n(1) = Freshman Fall\n" 
+						+ "(2) = Freshman Spring\n"
+						+ "(3) = Sophmore Fall\n"
+						+ "(4) = Sophmore Spring\n"
+						+ "(5) = Junior Fall\n"
+						+ "(6) = Junior Spring\n"
+						+ "(7) = Senior Fall\n"
+						+ "\nEnter choice or press Q to Quit: ";
+				String choice1 = "";
+				//Creates the Menu with choices.
+			while(!choice1.equalsIgnoreCase("Q"))
+			{
+				System.out.println(menuItems1);
+				choice1 = Validator.getLine(scan, "Enter choice: ", "(?i)[1234567Q]");
+				if(choice1.equalsIgnoreCase("Q"))
+					{
+						System.out.println(menuItems); //Returns back to the previous menu
+					}
+					else if(choice1.equalsIgnoreCase("1"))
+					{
+						CSFreshSpring(); //Calls upon Freshman Spring Menu for Computer Science
+					}
+					else if(choice1.equalsIgnoreCase("2"))
+					{
+						CSSophFall(); //Calls upon Sophomore Fall Menu for Computer Science
+					}
+					else if(choice1.equalsIgnoreCase("3"))
+					{
+						CSSophSpring(); //Calls upon Sophomore Spring Menu for Computer Science
+					}
+					else if(choice1.equalsIgnoreCase("4"))
+					{
+						CSJunFall(); //Calls upon Junior Fall Menu for Computer Science
+					}
+					else if(choice1.equalsIgnoreCase("5"))
+					{
+						CSJunSpring(); //Calls upon Junior Spring Menu for Computer Science
+					}
+					else if(choice1.equalsIgnoreCase("6"))
+					{
+						CSSenFall(); //Calls upon Senior Fall Menu for Computer Science
+					}
+					else if(choice1.equalsIgnoreCase("7"))
+					{
+						CSSenSpring(); //Calls upon Senior Spring Menu for Computer Science
+					}
+				}
+			}
+			else if(choice.equalsIgnoreCase("2"))
+			{
+				String menuItems1 = "\nWhat Year and Semester are you in?\n" 
+						+ "\n(1) = Freshman Fall\n" 
+						+ "(2) = Freshman Spring\n"
+						+ "(3) = Sophmore Fall\n"
+						+ "(4) = Sophmore Spring\n"
+						+ "(5) = Junior Fall\n"
+						+ "(6) = Junior Spring\n"
+						+ "(7) = Senior Fall\n"
+						+ "\nEnter choice or press Q to Quit: ";
+				String choice1 = "";
+				//Creates the Menu with choices.
+			while(!choice1.equalsIgnoreCase("Q"))
+			{
+				System.out.println(menuItems1);
+				choice1 = Validator.getLine(scan, "Enter choice: ", "(?i)[1234567Q]");
+				if(choice1.equalsIgnoreCase("Q"))
+					{
+						System.out.println(menuItems); //Returns back to the previous menu
+					}
+					else if(choice1.equalsIgnoreCase("1"))
+					{
+						ISFreshSpring(); //Calls upon Freshman Spring Menu for Information Systems
+					}
+					else if(choice1.equalsIgnoreCase("2"))
+					{
+						ISSophFall(); //Calls upon Sophomore Fall Menu for Information Systems
+					}
+					else if(choice1.equalsIgnoreCase("3"))
+					{
+						ISSophSpring(); //Calls upon Sophomore Spring Menu for Information Systems
+					}
+					else if(choice1.equalsIgnoreCase("4"))
+					{
+						ISJunFall(); //Calls upon Junior Fall Menu for Information Systems
+					}
+					else if(choice1.equalsIgnoreCase("5"))
+					{
+						ISJunSpring(); //Calls upon Junior Spring Menu for Information Systems
+					}
+					else if(choice1.equalsIgnoreCase("6"))
+					{
+						ISSenFall(); //Calls upon Senior Fall Menu for Information Systems
+					}
+					else if(choice1.equalsIgnoreCase("7"))
+					{
+						ISSenSpring(); //Calls upon Senior Spring Menu for Information Systems
+					}
+				}
+			}
+			else if(choice.equalsIgnoreCase("3"))
+			{
+					filterByUsername();
+		
+			}
+		}
+	}
+	private void filterByUsername() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		System.out.println("\n" + Favorites.getHeadings());
+		for(Favorites favorite : favoritesList.filterByUsername(userName))
+		{
+			System.out.println(favorite);
+		}
+	}
+	
+	private Object ISSenSpring() 
+	{
+		ISSenSpring isss = new ISSenSpring();
+		return isss;
+	}
+	private Object ISSenFall() 
+	{
+		ISSenFall issf = new ISSenFall();
+		return issf;
+	}
+	private Object ISJunSpring() 
+	{
+		ISJunSpring isjs = new ISJunSpring();
+		return isjs;
+	}
+	private Object ISJunFall() 
+	{
+		ISJunFall isjf = new ISJunFall();
+		return isjf;
+	}
+	private Object ISSophSpring() 
+	{
+		ISSophSpring isss = new ISSophSpring();
+		return isss;
+	}
+	private Object ISSophFall() 
+	{
+		ISSophFall issf = new ISSophFall();
+		return issf;
+	}
+	private Object ISFreshSpring() 
+	{
+		ISFreshSpring isfs = new ISFreshSpring();
+		return isfs;
+	}
+	
+	private Object CSFreshSpring() 
+	{
+		CSFreshSpring csfs = new CSFreshSpring();
+		return csfs;
+	}
+	private Object CSSophFall() 
+	{
+		CSSophFall cssf = new CSSophFall();
+		return cssf;
+	}
+	private Object CSSophSpring() 
+	{
+		CSSophSpring csss = new CSSophSpring();
+		return csss;
+	}
+	private Object CSJunFall() 
+	{
+		CSJunFall csjf = new CSJunFall();
+		return csjf;
+	}
+	private Object CSJunSpring() 
+	{
+		CSJunSpring csjs = new CSJunSpring();
+		return csjs;
+	}
+	private Object CSSenFall() 
+	{
+		CSSenFall cssf = new CSSenFall();
+		return cssf;
+	}
+	private Object CSSenSpring() 
+	{
+		CSSenSpring csss = new CSSenSpring();
+		return csss;
+	}
+	public void NewUser()
+	{
+		String userName = Validator.getLine(scan, "\nEnter MU Username: ");
+		String pw = Validator.getLine(scan, "Enter Password: ");
+		NewUser NewUser = new NewUser(userName, pw);
+		userList.newUser(NewUser);
+	}
+
+	public static void main(String[] args)
+	{
+		new MainMenu();
+		System.out.println("\nHave a nice day :)");
+	}
+}
