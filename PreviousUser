@@ -1,0 +1,49 @@
+package teamjava.courses.project;
+
+public class PreviousUser 
+{
+	private String userName;
+	private String pw;
+	
+	public PreviousUser(String userName, String pw) 
+	{
+		this.userName = userName;
+		this.pw = pw;
+	}
+
+	public String getUserName() 
+	{
+		return userName;
+	}
+
+	public void setUserName(String userName) 
+	{
+		this.userName = userName;
+	}
+
+	public String getPw() 
+	{
+		return pw;
+	}
+
+	public void setPw(String pw) 
+	{
+		this.pw = pw;
+	}
+	
+	public static String getHeadings() 
+	{
+		return String.format("%-15s %-15s", "Username", "Password");
+	}
+
+	@Override
+	public String toString() 
+	{
+		return String.format("%-15s %-15s", userName, pw);
+	}
+
+	public String toFileString() 
+	{
+		return String.format("%1s:%1s", userName, pw);
+	}
+}
