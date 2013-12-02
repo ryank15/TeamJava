@@ -1,0 +1,93 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class CSSenSpring 
+{
+	Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+	public CSSenSpring()
+	{
+		menu();
+	}
+	public void menu() 
+	{
+        String menuItems = "\nSenior Spring Courses\n"
+                + "(1) = CIS 3325 Operating Systems\n"
+                + "(2) = CIS 4000 Senior Seminar\n"
+                + "(3) = CIS 4470 System Implementation and Project Management\n"
+                + "(4) = General Education Course\n"
+                + "(5) = Free Elective\n"
+                + "\nEnter number of choice or press Q to go back: ";
+        String choice = "";
+        while (!choice.equalsIgnoreCase("Q")) 
+        {
+            System.out.println(menuItems);
+            choice = Validator.getLine(scan, "Enter number of choice [12345Q]: ", "(?i)[12345Q]");
+            if(choice.equalsIgnoreCase("Q")) {
+                return;
+            } 
+            else if (choice.equalsIgnoreCase("1")) 
+            {
+                System.out.println( "\nDescription: \n\nFunctions and characteristics of an operating system: concurrent processes, \n"
+                		+ "system nucleus, memory management, input and output, filing system, resource allocation and scheduling, \n"
+                		+ "system protection and reliability, and job control.");
+                System.out.println("Credits: 3.0");
+                System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+        		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+        			if(choice.equalsIgnoreCase("Y"))
+        			{
+        				Favorites();
+        			}
+        			else if(choice.equalsIgnoreCase("N"))
+        			{
+        				System.out.println(menuItems);
+        			}
+            } 
+            else if (choice.equalsIgnoreCase("2")) 
+            {
+                System.out.println( "\nDescription: \n\nSenior Seminar class will be explained upon scheduling");
+                System.out.println("Credits: 1.0");
+            } 
+            else if (choice.equalsIgnoreCase("3")) 
+            {
+                System.out.println( "\nDescription: \n\nThis course will provide an opportunity for students to combine and apply \n"
+                		+ "knowledge from prior classes to implement a project. It also describes the problems of managing and \n"
+                		+ "implementing a project within an organization for the purpose of achieving a specific objective. It will \n"
+                		+ "broadly cover the operational and conceptual issue faced by modern project managers.");
+                System.out.println("Credits: 3.0");
+                System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+        		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+        			if(choice.equalsIgnoreCase("Y"))
+        			{
+        				Favorites();
+        			}
+        			else if(choice.equalsIgnoreCase("N"))
+        			{
+        				System.out.println(menuItems);
+        			}
+            }
+            else if (choice.equalsIgnoreCase("4")) 
+            {
+            	System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+                System.out.println("Credits: 3.0");
+            } 
+            else if (choice.equalsIgnoreCase("5")) 
+            {
+            	System.out.println("\nDescription: \n\nChoose any you would like to take.");
+				System.out.println("Credits: 4.0");
+			}
+        }
+    }
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String[] args)
+	{
+		new CSSenSpring();
+	}
+}
