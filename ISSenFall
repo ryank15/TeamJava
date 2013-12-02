@@ -1,0 +1,61 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class ISSenFall {
+	Scanner sc = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+	public ISSenFall()
+	{
+		menu();
+	}
+	public void menu() {
+		String menuItems = "\nSenior Fall Courses\n"
+				+ "(1) = CIS 4460 Systems Analysis\n"
+				+ "(2) = CIS Elective (3XXX or Higher)\n"
+				+ "(3) = Free Electives\n"
+				+ "\npress Q to go back a page: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(sc, "Enter number of choice [123Q]: ", "(?i)[123Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} else if (choice.equalsIgnoreCase("1")) {
+				System.out.println("\nDescription: \n\nThis course provides an introduction to Systems Analysis and Design.\n"
+						+ "Topics include: the systems development life cycle; organization, data, and process modeling; \n"
+						+ "structured and object-oriented analysis and design. Students will also learn about input and output \n"
+						+ "design, database design, usability issues, human-computer interaction, quality assurance and implementation.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(sc, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("2")) {
+				System.out.println("\nDescription: \n\nWhen registering on web advisor, choose a class in the Computer Information Systems 1"
+						+ "courses that is at least a level 3000.");
+				System.out.println("Credits: 3.0");
+			} else if (choice.equalsIgnoreCase("3")) {
+				System.out.println("\nDescription: \n\nChoose any Free Elective you would like to take.");
+				System.out.println("Credits: 9.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(sc, "\nEnter Username: ");
+		String course = Validator.getLine(sc, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String[] args)
+	{
+		new ISSenFall();
+	}
+}
