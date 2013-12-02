@@ -1,0 +1,103 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class CSFreshSpring {
+	Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+	
+	public CSFreshSpring() {
+		menu();
+	}
+	public void menu() {
+			String menuItems = "\nFreshman Spring Courses\n"
+			+ "(1) = CIS 3315 Data Structures\n"
+			+ "(2) = MA 2232 Calculus II\n"
+			+ "(3) = COM 1101 Oral Communication\n"
+			+ "(4) = ENG 1112 Composition II\n"
+			+ "\nEnter number of choice or press Q to go back: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(scan, "Enter letter of choice [1234Q]: ", "(?i)[1234Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} 
+			else if (choice.equalsIgnoreCase("1")) {
+				System.out.println("\nDescription: \n\nIntroduces fundamental data structures such as arrays, linked lists, stacks, \n"
+						+ "queues, trees, and graphs. Other more advanced topics may include recursion, sorting and hashing.");
+				System.out.println("Credits: 4.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} 
+			else if (choice.equalsIgnoreCase("2")) {
+				System.out.println( "\nDescription: \n\nThis is a continuation of MA 2231 and is intended to develop a good understanding \n"
+						+ "of the definite integral and its uses including calculating area and applying numerical computation and \n"
+						+ "estimation techniques, and to develop basic integration techniques. Differential equations, Taylor \n"
+						+ "polynomials, series, exponential functions, logarithmic functions,polar coordiantes, and analytic geometry \n"
+						+ "are also covered.");
+				System.out.println("Credits: 4.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} 
+			else if (choice.equalsIgnoreCase("3")) {
+				System.out.println( "\nDescription: \n\nObjectives are to help the student to formulate his/her own ideas coherently, \n"
+						+ "evaluate factual material, and use sound reasoning patterns in his/her preparation and attempts to \n"
+						+ "communicate concepts orally; to determine and select the most effective means of expression in formal and \n"
+						+ "informal speaking situations. Required of all Mansfield students.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} 
+			else if (choice.equalsIgnoreCase("4")) {
+				System.out.println( "\nDescription: \n\nIntensive reading and writing of expository prose. Analytical and critical \n"
+						+ "thinking and college-level research skills are emphasized.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+
+	public static void main(String args[]) {
+		new CSFreshSpring();
+	}
+}
