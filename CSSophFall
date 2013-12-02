@@ -1,0 +1,95 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class CSSophFall {
+	Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+
+	public CSSophFall() {
+		menu();
+	}
+	public void menu() {
+		String menuItems = "\nSophomore Fall Courses\n"
+				+ "(1) = CIS 2206 Business Programming Concepts I\n"
+				+ "(2) = CIS 3330 Computer Organization\n"
+				+ "(3) = MA 3260 Discrete Structures\n"
+				+ "(4) = Lab Science Sequence (Part 1)\n"
+				+ "(5) = General Education Course\n"
+				+ "\nEnter number of choice or press Q to go back: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) {
+			System.out.println(menuItems);
+			choice = Validator.getLine(scan, "Enter letter of choice [12345Q]: ", "(?i)[12345Q]");
+			if(choice.equalsIgnoreCase("Q")) {
+				return;
+			} 
+			else if (choice.equalsIgnoreCase("1")) {
+				System.out.println( "\nDecription: \n\nAn introduction to analyzing and designing solutions to business-related problems \n"
+						+ "using a business programming language.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} 
+			else if (choice.equalsIgnoreCase("2")) {
+				System.out.println("\nDecription: \n\nOverview of computer hardware, computer structure, machine representation of \n"
+						+ "information, instruction codes, addressing, concepts of digital logic, microprogramming and assembly \n"
+						+ "language programming.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} 
+			else if (choice.equalsIgnoreCase("3")) {
+				System.out.println( "\nDecription: \n\nFoundations of mathematics, emphasizing fundamental concepts in abstract \n"
+						+ "mathematics and deductive reasoning. Topics include logic, mathematical induction, graph theory, recurrence \n"
+						+ "relations, difference equations, Boolean algebra, sets, functions, relations, cardinality, number systems \n"
+						+ "and algorithms.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			}
+			else if(choice.equalsIgnoreCase("4")){
+				System.out.println("\nDecription: \n\nChoose a Science Lab Sequence containing two parts.");
+				System.out.println("Credits: 4.0");
+			}
+			else if(choice.equalsIgnoreCase("5")){
+            	System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+				System.out.println("Credits: 3.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String args[]) {
+		new CSSophFall();
+	}
+}
