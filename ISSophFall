@@ -1,0 +1,96 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class ISSophFall {
+	Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+
+	public ISSophFall() 
+	{
+		menu();
+	}
+	public void menu() 
+	{
+		String menuItems = "\nSophomore Fall Courses\n"
+				+ "(1) CIS 1115(L) Programming with Objects\n"
+				+ "(2) CIS 3309 Mgmt Info Systems\n"
+				+ "(3) BUS 1130 Intro Bus and Mgmt\n"
+				+ "(4) General Education Courses \n"
+				+ "\nEnter number of choice or press Q to go back: ";
+		String choice = "";
+		while (!choice.equalsIgnoreCase("Q")) 
+		{
+			System.out.println(menuItems);
+			choice = Validator.getLine(scan, "Enter letter of choice [123Q]: ", "(?i)[123Q]");
+			if(choice.equalsIgnoreCase("Q")) 
+			{
+				return;
+			} else if (choice.equalsIgnoreCase("1")) 
+			{
+				System.out.println("\n Description: \n\nIntroduction to computer-based problem solving and programming using a high-level language.\n" + 
+						"Topics include problem solving methodologies, program design, algorithm development, and testing.\n" +
+						"Language concepts include variables, data types and expressions, assignment, control-flow statements, "
+						+ "arrays, sorting, functions, and classes and objects.");
+				System.out.println("Credits: 4.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("2")) 
+			{
+				System.out.println("\n Description: \n\nAn introductory course to computer-based information systems (CBIS) with emphasis on information processing "
+						+ "systems as a tool for management of organizations.\n This course requires that students learn to "
+						+ "use software and hardware to facilitate managerial decision-making, planning, and control.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			} else if (choice.equalsIgnoreCase("3")) 
+			{
+				System.out.println("\n Description: \n\nStudies an overview of the broad concept of business functions.\n" +
+						"Provides a foundation for understanding the relationship between essential activities of business.\n" +
+						"Helps students to determine and pursue their areas of interest and aptitude.");
+				System.out.println("Credits: 3.0");
+				System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+				choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+					if(choice.equalsIgnoreCase("Y"))
+					{
+						Favorites();
+					}
+					else if(choice.equalsIgnoreCase("N"))
+					{
+						System.out.println(menuItems);
+					}
+			}
+			else if (choice.equalsIgnoreCase("4"))
+			{
+				System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+				System.out.println("Credits: 6.0");
+			}
+		}
+	}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+	public static void main(String args[]) 
+	{
+		new ISSophFall();
+	}
+}
