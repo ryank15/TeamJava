@@ -1,0 +1,104 @@
+package teamjava.courses.project;
+import java.util.Scanner;
+
+public class ISFreshSpring {
+	Scanner scan = new Scanner(System.in);
+	userArrayList userList = new userArrayList();
+	
+	public ISFreshSpring() {
+		menu();
+	}
+	
+	public void menu(){
+
+	String menuItems = "\nFreshman Spring Courses\n"
+
+	+ "(1) CIS Elective 2XXX or higher \n"
+
+	+ "(2) MA 1125 Intro to Statistics \n"
+
+	+ "(3) ACC 1111 \n"
+
+	+ "(4) Oral Communications Course \n"
+	
+	+ "(5) General Education Course \n"
+
+	+ "\nPress Q to go back a page";
+
+	String choice = "";
+
+	while(!choice.equalsIgnoreCase("Q")){
+
+	System.out.println(menuItems);
+
+	choice = Validator.getLine(scan, "Enter number of choice [12345Q]: ", "(?i)[12345Q]");
+
+	if(choice.equalsIgnoreCase("Q")){
+	return;
+	}
+	else if(choice.equalsIgnoreCase("1")){
+	System.out.println("\nDescription: \n\nWhen registering on web advisor, choose a class in the Computer Information Systems "
+			+ "courses that is at least a level 2000.");
+	System.out.println("Credits: 3.0");
+	}
+	else if(choice.equalsIgnoreCase("2")){
+	System.out.println("\nDescription: \n\nA survey of basic statistical methods for analyzing data. Topics include descriptive statistics, \n"
+			+ "probability, sampling, point and interval estimation, hypothesis tests, linear regression, correlation, and \n"
+			+ "non-parametric tests.");
+	System.out.println("Credits: 3.0");
+	System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+	choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+		if(choice.equalsIgnoreCase("Y"))
+		{
+			Favorites();
+		}
+		else if(choice.equalsIgnoreCase("N"))
+		{
+			System.out.println(menuItems);
+		}
+	}
+	else if(choice.equalsIgnoreCase("3")){
+		System.out.println("\nDescription: \n\nA continuation of ACC-1110, includes current and long-term liabilities, \n"
+				+ "payroll, corporate accounting, cash flows, and financial statement analysis. Introduces managerial accounting concepts,\n"
+				+ "including manufacturing accounting and budgets, and costing tools. Covers concepts of ethical behavior in accounting \n"
+				+ "practice.");
+		System.out.println("Credits: 3.0");
+		System.out.print("\nWould you like to add this class to your favorites?(Y/N): \n");
+		choice = Validator.getLine(scan, "Enter choice: ", "(?i)[YN]");
+			if(choice.equalsIgnoreCase("Y"))
+			{
+				Favorites();
+			}
+			else if(choice.equalsIgnoreCase("N"))
+			{
+				System.out.println(menuItems);
+			}
+	}
+	else if(choice.equalsIgnoreCase("4")){
+	System.out.println("\nDescription: \n\nObjectives are to help the student to formulate his/her own ideas coherently, \n"
+			+ "evaluate factual material, and use sound reasoning patterns in his/her preparation and \n"
+			+ "attempts to communicate concepts orally; to determine and select the most effective means "
+			+ "of expression in formal and informal speaking situations. Required of all Mansfield students.");
+	System.out.println("Credits: 3.0");
+
+	}
+	
+	else if(choice.equalsIgnoreCase("5")){
+		System.out.println("\nDescription: \n\nChoose any General Education Course that fits your requirements.");
+		System.out.println("Credits: 3.0");
+		}
+	}
+}
+	private void Favorites() 
+	{
+		String userName = Validator.getLine(scan, "\nEnter Username: ");
+		String course = Validator.getLine(scan, "\nEnter Course Name and Number: ");
+		Favorites favorite = new Favorites(userName, course);
+		userList.Favorites(favorite);
+	}
+
+	public static void main(String[] args) 
+	{
+		new ISFreshSpring();
+	}
+}
